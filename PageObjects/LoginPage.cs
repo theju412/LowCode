@@ -21,6 +21,15 @@ namespace LowCode.PageObjects
         [FindsBy(How = How.XPath, Using = LoginPageLocator.signInButton)]
         public IWebElement signInButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = LoginPageLocator.countrySelectionDropdownField)]
+        public IWebElement countrySelectionDropdownField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = LoginPageLocator.listOfCountries)]
+        public IWebElement listOfCountries { get; set; }
+
+        [FindsBy(How = How.XPath, Using = LoginPageLocator.continueButton)]
+        public IWebElement continueButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = LoginPageLocator.profileIcon)]
         public IWebElement profileIcon { get; set; }
 
@@ -45,9 +54,15 @@ namespace LowCode.PageObjects
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             IWebElement emailField = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-username")));
           
-            emailField.SendKeys("dhanya@yopmail.com");
+            emailField.SendKeys("subin@yopmail.com");
             passwordField.SendKeys("Test@123");
             signInButton.Click();
+
+            IWebElement countrySelectionDropdownField = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='field-wrapper']//div[@class='ng-select-container ng-has-value']")));
+            countrySelectionDropdownField.Click();
+            SelectElement dropdown = new SelectElement(listOfCountries);
+            dropdown.SelectByText("India");
+            continueButton.Click();
 
             IWebElement profileIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("dropdownBasic1")));
             profileIcon.Click();

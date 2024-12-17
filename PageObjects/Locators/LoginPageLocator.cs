@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LowCode.PageObjects.Locators
 {
     class LoginPageLocator
@@ -15,8 +10,11 @@ namespace LowCode.PageObjects.Locators
         #endregion
 
         #region HomePage
+        public const string countrySelectionDropdownField = "//div[@class='field-wrapper']//div[@class='ng-select-container ng-has-value']";
+        public const string listOfCountries = "//div[@class='ng-dropdown-panel-items scroll-host']//div";
+        public const string continueButton = "//button[contains(text(),'Continue')]";
         public const string profileIcon = "//button[@id='dropdownBasic1']";
-        public const string signOut = "//app-header/div[1]/div[1]/div[2]/div[2]/div[1]/button[4]";
+        public const string signOut = "//button[@class='dropdown-item'][4]";
         #endregion
     }
 }
